@@ -1,0 +1,15 @@
+{
+  "name": "hubot-moji",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@my.github.com/ara-ta3/hubot-moji.git"
+  },
+  "author": "Arata Tanaka",
+  "license": "MIT"
+}
