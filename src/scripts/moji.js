@@ -9,7 +9,7 @@ module.exports = function(robot) {
         var parsed = msg.split("").map(function(a) {
             return stringMap[a].replace(/0/,zeroOneMap["0"]).replace(/1/,zeroOneMap["1"]);
         });
-        msg.send parsed.join("");
+        msg.send(parsed.join(""));
     });
 };
 
