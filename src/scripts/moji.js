@@ -7,7 +7,7 @@
 module.exports = function(robot) {
     robot.respond(/moji (.+)/i, function(msg) {
         var parsed = msg.match[1].split("").map(function(a) {
-            return stringMap[a].replace(/0/,zeroOneMap["0"]).replace(/1/,zeroOneMap["1"]);
+            return stringMap[a].replace(/0/g,zeroOneMap["0"]).replace(/1/g,zeroOneMap["1"]);
         });
         msg.send(parsed.join(""));
     });
