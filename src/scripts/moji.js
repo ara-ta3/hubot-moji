@@ -3,6 +3,8 @@
 // Commands:
 //  hubot moji abc - echo abc by set chars
 
+var path = require("path");
+
 var zeroOneMap  = {
     "0": "0",
     "1": "1"
@@ -10,7 +12,8 @@ var zeroOneMap  = {
 
 var confFilePath = process.env.HUBOT_MOJI_ZEROONEMAP_CONF;
 if (confFilePath) {
-    var conf = require(confFilePath);
+    var p = path.resolve(process.cwd() + "/" + confFilePath);
+    var conf = require(p);
     if (typeof conf["0"] === "string" && typeof conf["1"] === "string") {
         zeroOneMap = conf;
     }
