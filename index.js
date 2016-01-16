@@ -1,5 +1,5 @@
-Fs   = require 'fs'
-Path = require 'path'
+Fs   = require('fs');
+Path = require('path');
 
 module.exports = function(robot) {
   var path = Path.resolve(__dirname, 'src/scripts');
@@ -9,5 +9,5 @@ module.exports = function(robot) {
                 robot.loadFile(path, file);
             }
         }
-    }
+    });
 }
