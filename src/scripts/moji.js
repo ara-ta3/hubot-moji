@@ -3,24 +3,18 @@
 // Commands:
 //  hubot moji abc - echo abc by set chars
 
-
-module.exports = function(robot) {
-    robot.respond(/moji (.+)/i, function(msg) {
-        var parsed = msg.match[1].split("").map(function(a) {
-            return stringMap[a].replace(/0/g,zeroOneMap["0"]).replace(/1/g,zeroOneMap["1"]).split("\n");
-        }).reduce(function(pre, cur) {
-            return pre.map(function(p, i) {
-                return p + cur[i];
-            });
-        }).join("\n");
-        msg.send(parsed);
-    });
-};
-
 var zeroOneMap  = {
-    "0": ":wwww:",
-    "1": ":hoto:"
+    "0": "0",
+    "1": "1"
 };
+
+var confFilePath = process.env.HUBOT_MOJI_ZEROONEMAP_CONF;
+if (confFilePath) {
+    var conf = require(confFilePath);
+    if (typeof conf["0"] === "string" && typeof conf["1"] === "string") {
+        zeroOneMap = conf;
+    }
+}
 
 var stringMap = {
     "a":"0011100\n0100010\n0111110\n0100010\n0100010",
@@ -51,3 +45,17 @@ var stringMap = {
     "z":"0111110\n0000110\n0011000\n0110000\n0111110"
 }
 ;
+module.exports = function(robot) {
+    robot.respond(/moji (.+)/i, function(msg) {
+        var parsed = msg.match[1].split("").map(function(a) {
+            return stringMap[a].replace(/0/g,zeroOneMap["0"]).replace(/1/g,zeroOneMap["1"]).split("\n");
+        }).reduce(function(pre, cur) {
+            return pre.map(function(p, i) {
+                return p + cur[i];
+            });
+        }).join("\n");
+        msg.send(parsed);
+    });
+};
+
+
