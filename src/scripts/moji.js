@@ -1,64 +1,51 @@
 // Description
-//  TODO
+//  this displays alphabets in certain strings
+//  mainly, used with slack emoji
 // Commands:
-//  hubot moji abc - echo abc by set chars
+//  hubot moji parse abc - echo abc by set strings
+//  hubot moji set blank :black_circle: set blank string
+//  hubot moji set filled :star: - set filled string
+//  hubot moji status - confirm current blank and filled string
 
-var path = require("path");
+var Parser      = require("../util/Parser.js");
+var Repository  = require("../repository/StringMapRepository.js");
 
-var zeroOneMap  = {
-    "0": "0",
-    "1": "1"
-};
-
-var confFilePath = process.env.HUBOT_MOJI_ZEROONEMAP_CONF;
-if (confFilePath) {
-    var p = path.resolve(process.cwd() + "/" + confFilePath);
-    var conf = require(p);
-    if (typeof conf["0"] === "string" && typeof conf["1"] === "string") {
-        zeroOneMap = conf;
-    }
-}
-
-var stringMap = {
-    "a":"0011100\n0100010\n0111110\n0100010\n0100010",
-    "b":"0111100\n0100010\n0111110\n0100010\n0111100",
-    "c":"0111110\n0100000\n0100000\n0100000\n0111110",
-    "d":"0111100\n0100110\n0100110\n0100110\n0111100",
-    "e":"0111110\n0100000\n0111110\n0100000\n0111110",
-    "f":"0111110\n0100000\n0111100\n0100000\n0100000",
-    "g":"0011100\n0100000\n0100110\n0100010\n0011100",
-    "h":"0100010\n0100010\n0111110\n0100010\n0100010",
-    "i":"0011100\n0001000\n0001000\n0001000\n0011100",
-    "j":"0001110\n0000100\n0000100\n0100100\n0011000",
-    "k":"0100110\n0101100\n0111000\n0101100\n0100110",
-    "l":"0100000\n0100000\n0100000\n0100000\n0111110",
-    "m":"0111110\n0101010\n0101010\n0101010\n0101010",
-    "n":"0111110\n0100010\n0100010\n0100010\n0100010",
-    "o":"0111110\n0100010\n0100010\n0100010\n0111110",
-    "p":"0111110\n0100010\n0111110\n0100000\n0100000",
-    "q":"0111110\n0100010\n0111110\n0000010\n0000010",
-    "r":"0111000\n0100100\n0111000\n0101100\n0100110",
-    "s":"0111110\n0100000\n0111110\n0000010\n0111110",
-    "t":"0111110\n0001000\n0001000\n0001000\n0011100",
-    "u":"0100010\n0100010\n0100010\n0100010\n0111110",
-    "v":"1000001\n1100011\n0110110\n0011100\n0001000",
-    "w":"1000001\n0101010\n0101010\n0101010\n0010100",
-    "x":"1100011\n0110110\n0011100\n0110110\n1100011",
-    "y":"1100011\n0110110\n0011100\n0011100\n0011100",
-    "z":"0111110\n0000110\n0011000\n0110000\n0111110"
-}
-;
 module.exports = function(robot) {
-    robot.respond(/moji (.+)/i, function(msg) {
-        var parsed = msg.match[1].split("").map(function(a) {
-            return stringMap[a].replace(/0/g,zeroOneMap["0"]).replace(/1/g,zeroOneMap["1"]).split("\n");
-        }).reduce(function(pre, cur) {
-            return pre.map(function(p, i) {
-                return p + cur[i];
-            });
-        }).join("\n");
+    var init = function() {
+        parser = new Parser(repository.getStringMap(), repository.getZeroOneMap());
+        return parser;
+    };
+
+    var status = function() {
+        var zeroOneMap = repository.getZeroOneMap();
+        return "blank: " + zeroOneMap["0"] + ", filled: " + zeroOneMap["1"];
+    };
+
+    var repository  = new Repository(robot);
+    var parser      = new Parser(repository.getStringMap(), repository.getZeroOneMap());
+
+    robot.respond(/moji parse (.+)$/i, function(msg) {
+        var message = msg.match[1];
+        var filtered= message.toLowerCase().replace(/ /, "");
+        var parsed  = parser.parse(filtered);
         msg.send(parsed);
     });
+
+    robot.respond(/moji set blank (.+)/i, function(msg) {
+        var zeroString = msg.match[1];
+        repository.setBlank(zeroString);
+        init();
+        msg.send(status());
+    });
+
+    robot.respond(/moji set filled (.+)/i, function(msg) {
+        var oneString = msg.match[1];
+        repository.setFilled(oneString);
+        init();
+        msg.send(status());
+    });
+
+    robot.respond(/moji status$/i, function(msg) {
+        msg.send(status());
+    });
 };
-
-

@@ -9,25 +9,20 @@ npm install npm-moji
 ## Usage
 
 ```
-env HUBOT_MOJI_ZEROONEMAP_CONF=`pwd`/conf/conf.json ./bin/hubot
+$hubot moji parse abc
+001110001111000111110
+010001001000100100000
+011111001111100100000
+010001001000100100000
+010001001111000111110
+$hubot moji set blank :black_circle: 
+blank: :black_circle:, filled: 1
+$hubot moji set filled 
+blank: :black_circle:, filled: :star:
+$hubot moji parse abc
+:black_circle::black_circle::star::star::star::black_circle::black_circle::black_circle::star::star::star::star::black_circle::black_circle::black_circle::star::star::star::star::star::black_circle:
+:black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::black_circle::black_circle:
+:black_circle::star::star::star::star::star::black_circle::black_circle::star::star::star::star::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::black_circle::black_circle:
+:black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::black_circle::black_circle:
+:black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::star::star::star::black_circle::black_circle::black_circle::star::star::star::star::star::black_circle:
 ```
-
-## Conf Example
-
-```
-{
-    "0": ":black_small_square:",
-    "1":":star:"
-}
-```
-
-### Result
-
-```
-:black_small_square::black_small_square::star::star::star::black_small_square::black_small_square::black_small_square::star::star::star::star::black_small_square::black_small_square::black_small_square::star::star::star::star::star::black_small_square:
-:black_small_square::star::black_small_square::black_small_square::black_small_square::star::black_small_square::black_small_square::star::black_small_square::black_small_square::black_small_square::star::black_small_square::black_small_square::star::black_small_square::black_small_square::black_small_square::black_small_square::black_small_square:
-:black_small_square::star::star::star::star::star::black_small_square::black_small_square::star::star::star::star::star::black_small_square::black_small_square::star::black_small_square::black_small_square::black_small_square::black_small_square::black_small_square:
-:black_small_square::star::black_small_square::black_small_square::black_small_square::star::black_small_square::black_small_square::star::black_small_square::black_small_square::black_small_square::star::black_small_square::black_small_square::star::black_small_square::black_small_square::black_small_square::black_small_square::black_small_square:
-:black_small_square::star::black_small_square::black_small_square::black_small_square::star::black_small_square::black_small_square::star::star::star::star::black_small_square::black_small_square::black_small_square::star::star::star::star::star::black_small_square:
-```
-
