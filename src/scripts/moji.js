@@ -1,7 +1,11 @@
 // Description
-//  TODO
+//  this displays alphabets in certain strings
+//  mainly, used with slack emoji
 // Commands:
-//  hubot moji abc - echo abc by set chars
+//  hubot moji parse abc - echo abc by set strings
+//  hubot moji set blank :black_circle: set blank string
+//  hubot moji set filled :star: - set filled string
+//  hubot moji status - confirm current blank and filled string
 
 var Parser      = require("../util/Parser.js");
 var Repository  = require("../repository/StringMapRepository.js");
