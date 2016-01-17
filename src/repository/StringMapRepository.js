@@ -1,5 +1,4 @@
-
-module.exports = {
+var defaultStringMaps = {
     zeroOneMap: {
         "0": "0",
         "1": "1"
@@ -33,3 +32,40 @@ module.exports = {
         "z":"0111110\n0000110\n0011000\n0110000\n0111110"
     }
 };
+
+var StringMapRepository = function(robot) {
+    var ROBOT_STORAGE_KEY = "hubot-storage-key-YXJhdGF0YW5ha2E=";
+    var stringMaps = (robot && robot.brain.get(ROBOT_STORAGE_KEY)) || defaultStringMaps;
+
+    this.getStringMap = function() {
+        return stringMaps.stringMap;
+    };
+
+    this.getZeroOneMap = function() {
+        return stringMaps.zeroOneMap;
+    };
+
+    this.setBlank = function(zeroString) {
+        var zeroOneMap = stringMaps.zeroOneMap;
+        zeroOneMap["0"] = zeroString;
+        return setZeroOneMap(zeroOneMap);
+    };
+
+    this.setFilled = function(oneString) {
+        var zeroOneMap = stringMaps.zeroOneMap;
+        zeroOneMap["1"] = oneString;
+        return setZeroOneMap(zeroOneMap);
+    };
+
+    var setZeroOneMap = function(zeroOneMap) {
+        stringMaps.zeroOneMap = zeroOneMap;
+        commit();
+        return stringMaps.zeroOneMap;
+    };
+
+    var commit = function() {
+        robot && robot.brain.set(ROBOT_STORAGE_KEY, stringMaps);
+    };
+};
+
+module.exports = StringMapRepository;

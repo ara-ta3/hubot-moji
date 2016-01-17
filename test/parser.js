@@ -1,8 +1,9 @@
 var assert = require("power-assert");
-var Parser = require("../src/util/parser.js");
-var Default = require("../src/data/default.js");
-var zeroOneMap  = Default.zeroOneMap;
-var stringMap   = Default.stringMap;
+var Parser = require("../src/util/Parser.js");
+var Repository  = require("../src/repository/StringMapRepository.js");
+var repository  = new Repository(null);
+var zeroOneMap  = repository.getZeroOneMap();
+var stringMap   = repository.getStringMap();
 
 describe('Parser', function() {
     describe('#parse()', function () {
@@ -12,4 +13,5 @@ describe('Parser', function() {
             assert.equal(39, actual.length);
         });
     });
+
 });
