@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "./node_modules/.bin/mocha test"
   },
   "repository": {
     "type": "git",
     "url": "ssh://git@my.github.com/ara-ta3/hubot-moji.git"
   },
   "author": "Arata Tanaka",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "power-assert": "^1.2.0"
+  }
 }
