@@ -7,8 +7,8 @@
 //  hubot moji set filled :star: - set filled string
 //  hubot moji status - confirm current blank and filled string
 
-var Parser      = require("../util/Parser.js");
-var Repository  = require("../repository/StringMapRepository.js");
+var Parser      = require(__dirname + "/../util/Parser.js");
+var Repository  = require(__dirname + "/../repository/StringMapRepository.js");
 
 module.exports = function(robot) {
     var init = function() {
