@@ -6,6 +6,8 @@
 //  hubot moji set blank :black_circle: set blank string
 //  hubot moji set filled :star: - set filled string
 //  hubot moji status - confirm current blank and filled string
+//  hubot moji print  - alias for parse
+//  hubot moji printf - example: hubot moji printf abc :star: :black_circle:  => it displays abc with which is set :star: as filled and :black_circle: as blank
 
 var Parser      = require(__dirname + "/../util/Parser.js");
 var Repository  = require(__dirname + "/../repository/StringMapRepository.js");
