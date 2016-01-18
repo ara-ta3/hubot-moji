@@ -1,5 +1,7 @@
 # hubot-moji
 
+[![Build Status](https://travis-ci.org/ara-ta3/hubot-moji.svg?branch=master)](https://travis-ci.org/ara-ta3/hubot-moji)
+
 ## Install
 
 ```
