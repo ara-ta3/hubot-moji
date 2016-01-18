@@ -26,3 +26,5 @@ $hubot moji parse abc
 :black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::black_circle::black_circle:
 :black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::star::star::star::black_circle::black_circle::black_circle::star::star::star::star::star::black_circle:
 ```
+
+[Example](https://raw.githubusercontent.com/wiki/ara-ta3/hubot-moji/images/screenshot.png)
