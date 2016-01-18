@@ -31,6 +31,27 @@ module.exports = function(robot) {
         msg.send(parsed);
     });
 
+    robot.respond(/moji print (.+)/i, function(msg) {
+        var message = msg.match[1];
+        var filtered= message.toLowerCase().replace(/ /, "");
+        var parsed  = parser.parse(filtered);
+        msg.send(parsed);
+    });
+
+    robot.respond(/moji printf (.+) (.+) (.+)/i, function(msg) {
+        var message = msg.match[1];
+        var filled  = msg.match[2];
+        var blank   = msg.match[3];
+        var zeroOneMap = {
+            "0": blank,
+            "1": filled
+        };
+        var parser = new Parser(repository.getStringMap(), zeroOneMap);
+        var filtered= message.toLowerCase().replace(/ /, "");
+        var parsed  = parser.parse(filtered);
+        msg.send(parsed);
+    });
+
     robot.respond(/moji set blank (.+)/i, function(msg) {
         var zeroString = msg.match[1];
         repository.setBlank(zeroString);
@@ -48,4 +69,5 @@ module.exports = function(robot) {
     robot.respond(/moji status$/i, function(msg) {
         msg.send(status());
     });
+
 };
