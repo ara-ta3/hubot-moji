@@ -4,11 +4,13 @@ var Parser = function(stringMap, zeroOneMap) {
         var parsed = "";
         try {
             parsed =  target.split("").map(function(a) {
-                return stringMap[a].replace(/0/g,zeroOneMap["0"]).replace(/1/g,zeroOneMap["1"]).split("\n");
+                return stringMap[a];
             }).reduce(function(pre, cur) {
                 return pre.map(function(p, i) {
                     return p + cur[i];
                 });
+            }).map(function(a) {
+                return a.replace(/0/g,zeroOneMap["0"]).replace(/1/g,zeroOneMap["1"]);
             }).join("\n");
         } catch (e) {
             console.error(e);

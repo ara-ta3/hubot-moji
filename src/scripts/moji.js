@@ -72,4 +72,10 @@ module.exports = function(robot) {
         msg.send(status());
     });
 
+    robot.respond(/moji clear/i, function(msg) {
+        repository.clear();
+        init();
+        msg.send(status());
+    });
+
 };
