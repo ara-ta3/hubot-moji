@@ -8,7 +8,7 @@
 npm install npm-moji
 ```
 
-## Usage
+## Example
 
 ```
 $hubot moji parse abc
@@ -27,6 +27,13 @@ $hubot moji parse abc
 :black_circle::star::star::star::star::star::black_circle::black_circle::star::star::star::star::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::black_circle::black_circle:
 :black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::black_circle::black_circle::black_circle::black_circle::black_circle:
 :black_circle::star::black_circle::black_circle::black_circle::star::black_circle::black_circle::star::star::star::star::black_circle::black_circle::black_circle::star::star::star::star::star::black_circle:
+
+$hubot moji printf abcde :star: :blank:
+:blank::blank::star::star::star::blank::blank::blank::star::star::star::star::blank::blank::blank::star::star::star::star::star::blank::blank::star::star::star::star::blank::blank::blank::star::star::star::star::star::blank:
+:blank::star::blank::blank::blank::star::blank::blank::star::blank::blank::blank::star::blank::blank::star::blank::blank::blank::blank::blank::blank::star::blank::blank::star::star::blank::blank::star::blank::blank::blank::blank::blank:
+:blank::star::star::star::star::star::blank::blank::star::star::star::star::star::blank::blank::star::blank::blank::blank::blank::blank::blank::star::blank::blank::star::star::blank::blank::star::star::star::star::star::blank:
+:blank::star::blank::blank::blank::star::blank::blank::star::blank::blank::blank::star::blank::blank::star::blank::blank::blank::blank::blank::blank::star::blank::blank::star::star::blank::blank::star::blank::blank::blank::blank::blank:
+:blank::star::blank::blank::blank::star::blank::blank::star::star::star::star::blank::blank::blank::star::star::star::star::star::blank::blank::star::star::star::star::blank::blank::blank::star::star::star::star::star::blank:
 ```
 
 ![Example](https://raw.githubusercontent.com/wiki/ara-ta3/hubot-moji/images/screenshot2.png)
