@@ -28,14 +28,14 @@ module.exports = function(robot) {
 
     robot.respond(/moji parse (.+)$/i, function(msg) {
         var message = msg.match[1];
-        var filtered= message.toLowerCase().replace(/ /, "");
+        var filtered= message.toLowerCase();
         var parsed  = parser.parse(filtered);
         msg.send(parsed);
     });
 
     robot.respond(/moji print (.+)/i, function(msg) {
         var message = msg.match[1];
-        var filtered= message.toLowerCase().replace(/ /, "");
+        var filtered= message.toLowerCase();
         var parsed  = parser.parse(filtered);
         msg.send(parsed);
     });
@@ -49,7 +49,7 @@ module.exports = function(robot) {
             "1": filled
         };
         var parser = new Parser(repository.getStringMap(), zeroOneMap);
-        var filtered= message.toLowerCase().replace(/ /, "");
+        var filtered= message.toLowerCase();
         var parsed  = parser.parse(filtered);
         msg.send(parsed);
     });
